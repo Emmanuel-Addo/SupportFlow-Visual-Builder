@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Canvas from '../components/Canvas';
 import Sidebar from '../components/Sidebar';
+import ChatPreview from '../components/ChatPreview';
 
 export default function Builder() {
 
@@ -165,29 +166,33 @@ export default function Builder() {
 
       <main className="flex-1 flex overflow-hidden">
 
-        {/* Only show the canvas in editor mode */}
-        {currentMode === 'editor' && (
-          <Canvas
+        {/* In editor mode: show both Canvas and Sidebar */}
+        {currentMode === 'editor' ? (
+          <>
+            <Canvas
+              flowData={flowData}
+              selectedNodeId={selectedNodeId}
+              setSelectedNodeId={setSelectedNodeId}
+              searchQuery={searchQuery}
+              lineTrigger={lineTrigger}
+            />
+            <Sidebar
+              selectedNode={selectedNode}
+              updateNodeText={updateNodeText}
+              updateOptionText={updateOptionText}
+              resetToDefault={resetToDefault}
+            />
+          </>
+        ) : (
+          /* In preview mode: show the centered ChatPreview simulator */
+          <ChatPreview
             flowData={flowData}
-            selectedNodeId={selectedNodeId}
-            setSelectedNodeId={setSelectedNodeId}
-            searchQuery={searchQuery}
-            lineTrigger={lineTrigger}
+            chatHistory={chatHistory}
+            chatNodeId={chatNodeId}
+            handleChatChoice={handleChatChoice}
+            restartChat={restartChat}
           />
         )}
-
-        <Sidebar
-          flowData={flowData}
-          selectedNode={selectedNode}
-          updateNodeText={updateNodeText}
-          updateOptionText={updateOptionText}
-          resetToDefault={resetToDefault}
-          currentMode={currentMode}
-          chatHistory={chatHistory}
-          chatNodeId={chatNodeId}
-          handleChatChoice={handleChatChoice}
-          restartChat={restartChat}
-        />
 
       </main>
     </div>
