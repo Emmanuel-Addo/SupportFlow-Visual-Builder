@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Builder from './pages/Builder';
+import Preview from './pages/Preview';
 
 /**
  * Main Router Controller
@@ -12,6 +13,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="/builder" element={<Builder />} />
+      <Route path="/preview" element={<Preview />} />
     </Routes>
   );
 }
