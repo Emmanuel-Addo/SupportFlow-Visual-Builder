@@ -1,100 +1,74 @@
-# SupportFlow-Visual-Builder
-This challenge is designed to test your ability to bridge Computer Science fundamentals with Modern Frontend Engineering.
+# SupportFlow AI - Visual Flowchart Builder
 
-## 1. Business Scenario & Context
-**Client:** SupportFlow AI  
-**Industry:** Customer Support Automation (Chatbots)  
-
-**The Problem:** SupportFlow helps companies build automated "Help Bots" (e.g., "Press 1 for Billing, 2 for Tech Support"). Currently, their configuration is done via a messy Excel spreadsheet. It is error-prone, hard to visualize, and frustrating for non-technical managers.
-
-**Your Role:** You are the new Frontend Engineer. The Product Manager wants a **Visual Decision Tree Editor** where users can see their conversation flow as a flowchart, edit the questions in real-time, and "test drive" the bot instantly.
+SupportFlow AI is a web-based, visual decision-tree chatbot editor designed for customer support automation. It replaces complex, error-prone spreadsheets with an intuitive flowchart canvas where customer support managers can build, edit, and instantly preview support bot dialogue flows in real time.
 
 ---
 
-## 2. The Assignment Stages
-This is a **hybrid design/engineering challenge**. You are expected to demonstrate competence in both visual design logic and complex DOM manipulation.
-
-### Phase 1: The Design System 
-**Before writing code, you must design the visual language of the tool.**
-
-* **Deliverable:** A link to your design file (Figma, Penpot, or Sketch) or a PDF export of your design frames.
-* **Requirement:** Your design file must include a dedicated **"Design System" page** that defines:
-    * **Canvas** 
-    * **Node Cards**
-    * **Connectors**
-    * **Color Semantics**
-
-### Phase 2: The Implementation
-**Build the "Flow Builder" using your design system.**
-
-* **Constraint 1 (Critical):** You **cannot** use Flowchart/Graph libraries like `react-flow`, `jsPlumb`, or `mermaid.js`. You must build the node rendering and line connection logic yourself to prove you understand DOM coordinates and SVG/Canvas drawing.
-* **Constraint 2:** Do not use component libraries like Material UI or Bootstrap. (Tailwind is allowed only if you use it to build custom components).
+## 🔗 Live Project Links
+* **Live Deployment (Vercel):** [https://support-flow-visual-builder-tau.vercel.app/](https://support-flow-visual-builder-tau.vercel.app/)
+* **Figma UI Design File:** [Figma Design System & Frames](https://www.figma.com/design/i8abRdX81nN6rLr2jmhiYg/Untitled?node-id=11-6&t=DtVHImJkft7xUWlY-1)
 
 ---
 
-## 3. User Stories & Acceptance Criteria
-
-### Core Features (Required)
-
-#### Story 1: The Visual Graph
-> "As a user, I want to see my conversation logic as a connected flowchart, not a list."
-
-* **AC 1:** The app renders "Nodes" (questions) based on the provided JSON data.
-* **AC 2:** The Nodes are positioned absolutely on the canvas (using the x/y coordinates provided in the JSON).
-* **AC 3:** Visual lines (SVG or HTML Canvas) connect a Parent Node to its Child Nodes based on the flow logic.
-
-#### Story 2: The Editor
-> "As a user, I need to update the text when our support policies change."
-
-* **AC 1:** Clicking a Node opens an "Edit Panel" or turns the card into an editable form.
-* **AC 2:** Users can edit the "Question Text" and the changes reflect immediately on the canvas.
-* **AC 3:** (Constraint) You do not need to save changes to a permanent database. Managing local state (in-memory) is sufficient.
-
-#### Story 3: The "Preview" Mode (The Runner)
-> "As a manager, I want to test the bot experience as if I were a real customer."
-
-* **AC 1:** A "Play" button toggles the UI from "Editor View" (Flowchart) to "Preview Mode" (Chat Interface).
-* **AC 2:** In Preview Mode, the app displays the Start Node's question.
-* **AC 3:** When the user selects an answer, the app traverses the graph to show the next node.
-* **AC 4:** Show a "Restart" button when a leaf node (end of conversation) is reached.
-
-### The "Wildcard" Feature (Required)
-
-#### Story 4: The Innovation Clause
-> "As a developer, I want to add one feature that makes this tool indispensable."
-
-* **Task:** Identify a missing feature that improves the *Editor* experience.
-* **AC 1:** Implement **one** additional feature of your choice.
-* **AC 2:** In your README, explain *why* you chose this feature and how it adds value to the business.
+## 🎨 Design System & Visual Language
+The visual design focuses on a clean, high-contrast, minimalist theme (white, off-white, and charcoal black) to keep visual clutter at a minimum:
+* **Canvas:** Solid, clean off-white background (`#f8fafc`) ensuring node cards are highly legible.
+* **Connectors:** Custom-drawn SVG bezier curves representing dialogue paths. They turn from a light grey to a thick dark charcoal line (`#1F2937`) when a connected node is active.
+* **Color Semantics (Borders):**
+  - **Emerald Green (`#10B981`):** Denotes the **Start Node** (the entry point of the chatbot).
+  - **Charcoal Black (`#1F2937`):** Denotes standard **Question Nodes**.
+  - **Rose Red (`#F43F5E`):** Denotes terminal **End Nodes** (leaf nodes where the conversation halts).
 
 ---
 
-## 4. Technical Requirements
-* **Data:** Use the `flow_data.json` file provided in this repo.
-* **Tech Stack:** React, Vue, Svelte, or Vanilla JS.
+## 📁 Key File Directory & Architecture
+The project is built on **React 18 + Vite + Tailwind CSS** with clean, modular routing:
+
+* **[src/App.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/App.jsx):** Set up Router paths mapping `/` to the Dashboard, `/builder` to the Canvas Editor, and `/preview` to the Chatbot Simulator.
+* **[src/pages/Dashboard.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/pages/Dashboard.jsx):** A premium landing dashboard page introducing the tool and linking directly to the editor.
+* **[src/pages/Builder.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/pages/Builder.jsx):** The flowchart editor workspace that loads node layouts, computes coordinates, filters searches, and persists real-time text edits to `localStorage`.
+* **[src/pages/Preview.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/pages/Preview.jsx):** Standalone route for testing the bot. It retrieves the updated configuration tree from `localStorage` to sync live edits instantly.
+* **[src/components/Canvas.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/components/Canvas.jsx):** Dynamically draws curved SVG connector lines between parent nodes and child options without using external flowcharting libraries.
+* **[src/components/NodeCard.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/components/NodeCard.jsx):** Renders individual nodes with custom typography, buttons, color border tags, and search highlight styling.
+* **[src/components/Sidebar.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/components/Sidebar.jsx):** The form-based editing panel on the right side of the canvas for real-time text updates.
+* **[src/components/ChatPreview.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/components/ChatPreview.jsx):** A centered chatbot chat bubble interface styled like ChatGPT, displaying message feeds and options traversal.
+* **[design_system.html](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/design_system.html):** A printable specifications sheet of the Canvas, Cards, Connectors, and Swatches used for the Phase 1 deliverable.
 
 ---
 
-## 5. Submission Instructions
-1.  **Fork** this repository.
-2.  Complete the code in your fork.
-3.  **Update the README:**
-    * **Delete** all the instructions in this file (the text you are reading now).
-    * **Replace** them with your own documentation.
-    * *Note: Do not append your docs to the end. The final README should look like a professional project documentation, not a homework assignment.*
-4.  Submit your repo link via the [online](https://forms.office.com/e/G6vaRQxWYM) form.
+## 🌟 The "Wildcard" Feature: Search & Highlight
 
-### ⚠️ CRITICAL: Pre-Submission Checklist
+### Why It Was Chosen (Business Value)
+In real-world use cases, support trees grow very large (20+ nodes). Locating a specific dialogue box (for example, to update a policy on refund rules or hardware setups) becomes a tedious, slow visual chore. 
 
-**STOP and review your work.** To be eligible for the Solution Defense interview, your submission **MUST** pass the following "Gatekeeper" checks.
+To solve this, we implemented **Search & Highlight** directly inside the editor header. It allows admins to search for keywords inside question text and choice button labels to locate correct nodes in milliseconds.
 
-If any of the following are incorrect, your submission will be flagged as incomplete and you will **NOT** be invited for an interview.
+### Technical Implementation & UX Design
+1. **Header Search Bar:** Captures input and updates the global `searchQuery` state.
+2. **Focused Visual Ring:** When there is an active search, matching node cards scale up slightly (`scale-[1.03]`) and gain a thick black focus outline (`ring-4 ring-gray-900`).
+3. **Canvas Dimming:** Non-matching node cards fade to 20% opacity (`opacity-20`) and disable pointer interactions (`pointer-events-none`) to highlight the searched nodes.
+4. **Instant Reset:** Clearing the search input immediately restores the canvas opacity and card states.
 
-1.  **Public Repository:** Is your GitHub repository set to **Public**? (Private links will be auto-rejected).
-2.  **Audit-Ready History:** Does your Git commit history show your progress over time? (Repositories with a single "Initial Commit" or "Upload files" containing the entire project will be **rejected as unverifiable**).
-3.  **Working Deployment:** Have you tested your live link in an **Incognito/Private** window to ensure it loads without errors?
-4.  **No Restricted Libraries:** Did you build your own components? (Submissions using **Bootstrap, Material UI, or Chakra UI** will be disqualified).
-5.  **Design File Access:** Is your Figma/Penpot link included and set to **"Anyone with the link can view"**?
-6.  **Documentation:** Have you deleted the original assignment text from the `README.md` and replaced it with your own project documentation?
+---
 
-> **By submitting your work, you acknowledge that failure to meet these criteria effectively ends your application process.**
+## 🛠️ Getting Started
+
+### Installation
+```bash
+# Install dependencies
+yarn install
+```
+
+### Running Locally
+```bash
+# Launch development server
+yarn dev
+```
+Open **`http://localhost:3000`** in your browser.
+
+### Build Project
+```bash
+# Compile code bundle
+yarn build
+```
+Vite will output the compiled bundle to the `/dist` directory.
