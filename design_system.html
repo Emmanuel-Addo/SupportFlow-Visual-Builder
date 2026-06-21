@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SupportFlow AI - Design System Specifications</title>
+  <!-- Tailwind CSS for rich modern layout -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+    @media print {
+      body {
+        background-color: #ffffff;
+      }
+      .no-print {
+        display: none;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-900 min-h-screen py-12 px-6 sm:px-12 md:px-16">
+
+  <!-- Top bar helping user print (will not show in final PDF printout) -->
+  <div class="no-print max-w-5xl mx-auto mb-8 bg-gray-900 text-white rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+    <div>
+      <h4 class="font-bold text-sm">📄 Export to PDF Instructions</h4>
+      <p class="text-xs text-gray-400 mt-1">To turn this page into your required PDF deliverable, press <kbd class="bg-gray-800 px-1.5 py-0.5 rounded font-mono text-[10px] text-white">Ctrl + P</kbd> (or Cmd + P) in your browser, select "Save as PDF" as the destination, and save it to your project folder.</p>
+    </div>
+    <button onclick="window.print()" class="bg-white hover:bg-gray-100 text-gray-900 text-xs font-bold py-2.5 px-5 rounded-lg transition-all shadow-sm shrink-0">
+      Print to PDF
+    </button>
+  </div>
+
+  <div class="max-w-5xl mx-auto bg-white border border-gray-200 rounded-3xl p-10 md:p-16 shadow-sm">
+    
+    <!-- HEADER -->
+    <header class="border-b border-gray-100 pb-8 mb-12">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-gray-400">Phase 1 Deliverable</span>
+      <h1 class="text-3xl font-extrabold text-gray-900 mt-1">SupportFlow AI - UI Design System</h1>
+      <p class="text-xs text-gray-500 mt-2">Visual language specifications for the decision-tree decision builder editor canvas, cards, connectors, and semantic layout rules.</p>
+    </header>
+
+    <!-- SECTION 1: THE CANVAS -->
+    <section class="mb-12">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-gray-150 text-gray-800 text-[10px] font-bold font-mono px-2 py-1 rounded">FRAME 01</span>
+        <h2 class="text-lg font-bold text-gray-900">The Canvas</h2>
+      </div>
+      <p class="text-xs text-gray-600 mb-6 leading-relaxed">The main editing environment consists of an infinite scrolling board mapped with absolute layout coordinates. To avoid layout clutter, we use a solid background system that emphasizes node interactions.</p>
+      
+      <!-- Canvas Mockup Box -->
+      <div class="border border-gray-200 rounded-2xl bg-[#f8fafc] p-8 h-48 relative overflow-hidden flex items-center justify-center shadow-inner">
+        <div class="absolute top-4 left-4 text-[9px] font-mono text-gray-400">Active Canvas Workspace (100% Solid Off-White, Hex #F8FAFC)</div>
+        <div class="border border-gray-200 border-dashed rounded-lg p-3 text-[10px] text-gray-400 bg-white">
+          Absolute Coordinate Area
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: NODE CARDS -->
+    <section class="mb-12 page-break">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-gray-150 text-gray-800 text-[10px] font-bold font-mono px-2 py-1 rounded">FRAME 02</span>
+        <h2 class="text-lg font-bold text-gray-900">Node Cards</h2>
+      </div>
+      <p class="text-xs text-gray-600 mb-6 leading-relaxed">Cards act as visual container modules for support dialog trees. Card borders indicate state, hierarchy, and path outcomes using key colored borders and typography labels.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Start Card Spec -->
+        <div class="border border-gray-200 bg-white border-t-4 border-t-emerald-500 rounded-xl p-4 shadow-sm flex flex-col justify-between h-40">
+          <div>
+            <span class="text-[9px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">start</span>
+            <p class="text-[11px] font-semibold text-gray-800 mt-2">Welcome to SupportFlow! How can I help you today?</p>
+          </div>
+          <span class="text-[9px] font-mono text-gray-400 border-t border-gray-100 pt-2 block">Hex #10B981 | Emerald</span>
+        </div>
+
+        <!-- Question Card Spec -->
+        <div class="border border-gray-200 bg-white border-t-4 border-t-gray-800 rounded-xl p-4 shadow-sm flex flex-col justify-between h-40">
+          <div>
+            <span class="text-[9px] font-bold uppercase tracking-wider bg-gray-100 text-gray-700 px-2 py-0.5 rounded">question</span>
+            <p class="text-[11px] font-semibold text-gray-800 mt-2">Do you have an active subscription or billing question?</p>
+          </div>
+          <span class="text-[9px] font-mono text-gray-400 border-t border-gray-100 pt-2 block">Hex #1F2937 | Charcoal</span>
+        </div>
+
+        <!-- End Card Spec -->
+        <div class="border border-gray-200 bg-white border-t-4 border-t-rose-500 rounded-xl p-4 shadow-sm flex flex-col justify-between h-40">
+          <div>
+            <span class="text-[9px] font-bold uppercase tracking-wider bg-rose-50 text-rose-700 px-2 py-0.5 rounded">end</span>
+            <p class="text-[11px] font-semibold text-gray-800 mt-2">Thank you! Your ticket was successfully escalated.</p>
+          </div>
+          <span class="text-[9px] font-mono text-gray-400 border-t border-gray-100 pt-2 block">Hex #F43F5E | Rose</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: CONNECTORS -->
+    <section class="mb-12 page-break">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-gray-150 text-gray-800 text-[10px] font-bold font-mono px-2 py-1 rounded">FRAME 03</span>
+        <h2 class="text-lg font-bold text-gray-900">Connectors & Lines</h2>
+      </div>
+      <p class="text-xs text-gray-600 mb-6 leading-relaxed">Bezier curve connections map decision pathways without overlapping intersections. An active highlighting ring outlines selecting components to keep the workspace simple and focused.</p>
+
+      <div class="border border-gray-200 rounded-2xl p-6 bg-white shadow-sm flex flex-col gap-6">
+        <div class="flex flex-col sm:flex-row items-center justify-around gap-6">
+          
+          <!-- Standard Connector Curve Mockup -->
+          <div class="flex flex-col items-center">
+            <span class="text-[10px] font-bold text-gray-400 mb-2">Standard Curve Spec</span>
+            <svg class="w-40 h-16 border border-gray-100 rounded-lg bg-gray-50" viewBox="0 0 160 64">
+              <path d="M 10 32 C 60 32, 100 32, 150 32" stroke="#cbd5e1" stroke-width="2" fill="none" />
+            </svg>
+            <span class="text-[9px] text-gray-500 mt-1.5 font-mono">Stroke: 2px (hex #CBD5E1)</span>
+          </div>
+
+          <!-- Active Connector Curve Mockup -->
+          <div class="flex flex-col items-center">
+            <span class="text-[10px] font-bold text-gray-900 mb-2">Active Curve Spec</span>
+            <svg class="w-40 h-16 border border-gray-200 rounded-lg bg-gray-50" viewBox="0 0 160 64">
+              <path d="M 10 32 C 60 32, 100 32, 150 32" stroke="#1f2937" stroke-width="3" fill="none" />
+            </svg>
+            <span class="text-[9px] text-gray-800 mt-1.5 font-bold font-mono">Stroke: 3px (hex #1F2937)</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: COLOR SEMANTICS -->
+    <section class="mb-12">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-gray-150 text-gray-800 text-[10px] font-bold font-mono px-2 py-1 rounded">FRAME 04</span>
+        <h2 class="text-lg font-bold text-gray-900">Color Semantics</h2>
+      </div>
+      <p class="text-xs text-gray-600 mb-6 leading-relaxed">Harmonious semantic scales are implemented to denote flowchart path statuses without adding visual clutter.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <!-- Swatch 1 -->
+        <div class="border border-gray-200 rounded-xl p-3 bg-white flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-[#10b981]"></div>
+          <div>
+            <h4 class="text-[10px] font-bold text-gray-900">Start Border</h4>
+            <p class="text-[9px] font-mono text-gray-400">#10B981 (Emerald)</p>
+          </div>
+        </div>
+
+        <!-- Swatch 2 -->
+        <div class="border border-gray-200 rounded-xl p-3 bg-white flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-[#1f2937]"></div>
+          <div>
+            <h4 class="text-[10px] font-bold text-gray-900">Question Border</h4>
+            <p class="text-[9px] font-mono text-gray-400">#1F2937 (Charcoal)</p>
+          </div>
+        </div>
+
+        <!-- Swatch 3 -->
+        <div class="border border-gray-200 rounded-xl p-3 bg-white flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-[#f43f5e]"></div>
+          <div>
+            <h4 class="text-[10px] font-bold text-gray-900">End Border</h4>
+            <p class="text-[9px] font-mono text-gray-400">#F43F5E (Rose)</p>
+          </div>
+        </div>
+
+        <!-- Swatch 4 -->
+        <div class="border border-gray-200 rounded-xl p-3 bg-white flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-[#cbd5e1]"></div>
+          <div>
+            <h4 class="text-[10px] font-bold text-gray-900">Standard Connector</h4>
+            <p class="text-[9px] font-mono text-gray-400">#CBD5E1 (Slate-300)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-100 pt-6 mt-12 text-center">
+      <span class="text-[10px] text-gray-400">SupportFlow AI UI Design Spec Sheets. Created for Phase 1 Deliverables.</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
