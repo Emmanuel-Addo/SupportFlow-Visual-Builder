@@ -6,7 +6,7 @@ SupportFlow AI is a web-based, visual decision-tree chatbot editor designed for 
 
 ## 🔗 Live Project Links
 * **Live Deployment (Vercel):** [https://support-flow-visual-builder-tau.vercel.app/](https://support-flow-visual-builder-tau.vercel.app/)
-* **Figma UI Design File:** [Figma Design System & Frames](https://www.figma.com/design/i8abRdX81nN6rLr2jmhiYg/Untitled?node-id=11-6&t=DtVHImJkft7xUWlY-1)
+* **Figma UI Design File:** [Figma Design System & Frames](https://www.figma.com/design/HjkuAIzN9NJBrvDh0KzOVz/Untitled?node-id=6-227&t=INS06fpd0c7s2sAY-1)
 
 ---
 
