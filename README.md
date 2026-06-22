@@ -4,13 +4,13 @@ SupportFlow AI is a web-based, visual decision-tree chatbot editor designed for 
 
 ---
 
-## 🔗 Live Project Links
+## Live Project Links
 * **Live Deployment (Vercel):** [https://support-flow-visual-builder-tau.vercel.app/](https://support-flow-visual-builder-tau.vercel.app/)
 * **Figma UI Design File:** [Figma Design System & Frames](https://www.figma.com/design/HjkuAIzN9NJBrvDh0KzOVz/Untitled?node-id=6-227&t=INS06fpd0c7s2sAY-1)
 
 ---
 
-## 🎨 Design System & Visual Language
+## Design System & Visual Language
 The visual design focuses on a clean, high-contrast, minimalist theme (white, off-white, and charcoal black) to keep visual clutter at a minimum:
 * **Canvas:** Solid, clean off-white background (`#f8fafc`) ensuring node cards are highly legible.
 * **Connectors:** Custom-drawn SVG bezier curves representing dialogue paths. They turn from a light grey to a thick dark charcoal line (`#1F2937`) when a connected node is active.
@@ -21,7 +21,7 @@ The visual design focuses on a clean, high-contrast, minimalist theme (white, of
 
 ---
 
-## 📁 Key File Directory & Architecture
+## Key File Directory & Architecture
 The project is built on **React 18 + Vite + Tailwind CSS** with clean, modular routing:
 
 * **[src/App.jsx](file:///c:/Users/use/Desktop/projects/SupportFlow-Visual-Builder/src/App.jsx):** Set up Router paths mapping `/` to the Dashboard, `/builder` to the Canvas Editor, and `/preview` to the Chatbot Simulator.
@@ -36,7 +36,7 @@ The project is built on **React 18 + Vite + Tailwind CSS** with clean, modular r
 
 ---
 
-## 🌟 The "Wildcard" Feature: Search & Highlight
+## The "Wildcard" Feature: Search & Highlight
 
 ### Why It Was Chosen (Business Value)
 In real-world use cases, support trees grow very large (20+ nodes). Locating a specific dialogue box (for example, to update a policy on refund rules or hardware setups) becomes a tedious, slow visual chore. 
@@ -51,7 +51,7 @@ To solve this, we implemented **Search & Highlight** directly inside the editor 
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Installation
 ```bash
