@@ -133,6 +133,7 @@ export default function Builder() {
           updateNodeText={updateNodeText}
           updateOptionText={updateOptionText}
           resetToDefault={resetToDefault}
+          currentMode="editor"
         />
       </main>
     </div>

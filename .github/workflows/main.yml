@@ -1,4 +1,4 @@
-name: SupportFlow CI
+name: ecommerce workflow
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Build project
-        run: yarn build
+        run: npm run build

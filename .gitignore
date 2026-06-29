@@ -1,12 +1,3 @@
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-
-# Vite cache
-.vite/
-
-# Local env files
+node_modules
+dist
 .env
-.env.local
